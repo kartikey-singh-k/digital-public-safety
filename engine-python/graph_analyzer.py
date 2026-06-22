@@ -7,16 +7,25 @@ def detect_fraud_ring(target_phone: str):
     # Mock Database Data: (Source, Target, Transaction Count)
     # You will eventually pull this from PostgreSQL
     edges = [
+        # (Source, Target, Transaction Count/Weight)
         ("+919876543210", "Bank_Account_A", 5),
         ("Bank_Account_A", "Crypto_Wallet_X", 3),
-        ("+919999999999", "Bank_Account_A", 2), # Our target node
-        ("Crypto_Wallet_X", "Offshore_Account", 1)
+        ("+919999999999", "Bank_Account_A", 2),
+        ("Crypto_Wallet_X", "Offshore_Account_Cayman", 8),
+        ("+911122334455", "Crypto_Wallet_X", 4), # New scammer feeding the wallet
+        ("Offshore_Account_Cayman", "DarkWeb_Mixer", 10)
     ]
     
     G.add_weighted_edges_from(edges)
     
     if target_phone not in G:
-        return {"status": "Isolated", "risk_level": "Low", "nodes": []}
+        return {
+            "status": "Isolated", 
+            "risk_level": "Low", 
+            "syndicate_size": 0,
+            "nodes_involved": ["None"],
+            "key_hubs": ["None"]
+        }
 
     # Find the connected component containing the scammer
     components = list(nx.weakly_connected_components(G))

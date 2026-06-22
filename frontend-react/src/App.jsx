@@ -25,36 +25,36 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h2>🛡️ Citizen Fraud Shield Portal</h2>
+    <div className="app-container">
+      <h2 className="header-title">🛡️ Citizen Fraud Shield</h2>
       
-      <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
+      <form onSubmit={handleSubmit} className="report-form">
         <input 
           type="text" 
+          className="form-input"
           placeholder="Scammer Phone (e.g., +919999999999)" 
           value={phone} 
           onChange={(e) => setPhone(e.target.value)} 
           required 
-          style={{ display: 'block', margin: '10px 0', padding: '10px', width: '300px' }}
         />
         <textarea 
+          className="form-textarea"
           placeholder="Call Transcript / Details" 
           value={transcript} 
           onChange={(e) => setTranscript(e.target.value)} 
-          style={{ display: 'block', margin: '10px 0', padding: '10px', width: '300px', height: '100px' }}
         />
-        <button type="submit" disabled={loading} style={{ padding: '10px 20px', cursor: 'pointer' }}>
-          {loading ? 'Analyzing...' : 'Submit Report & Analyze Network'}
+        <button type="submit" className="submit-btn" disabled={loading}>
+          {loading ? 'Analyzing Network...' : 'Submit Report & Analyze'}
         </button>
       </form>
 
       {result && (
-        <div style={{ background: '#f4f4f4', padding: '20px', borderRadius: '8px' }}>
+        <div className="results-card">
           <h3>Network Intelligence Report</h3>
-          <p><strong>Status:</strong> <span style={{ color: result.risk_level === 'CRITICAL' ? 'red' : 'green' }}>{result.status}</span></p>
+          <p><strong>Status:</strong> <span className={result.risk_level === 'CRITICAL' ? 'status-critical' : 'status-safe'}>{result.status}</span></p>
           <p><strong>Syndicate Size:</strong> {result.syndicate_size} nodes</p>
-          <p><strong>Key Hubs (Ring Leaders/Main Accounts):</strong> {result.key_hubs?.join(', ')}</p>
-          <p><strong>All Nodes Involved:</strong> {result.nodes_involved?.join(' ➔ ')}</p>
+          <p><strong>Key Hubs:</strong> {result.key_hubs?.join(', ')}</p>
+          <p><strong>Nodes Involved:</strong> {result.nodes_involved?.join(' ➔ ')}</p>
         </div>
       )}
     </div>

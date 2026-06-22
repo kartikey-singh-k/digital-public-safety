@@ -8,12 +8,13 @@ app.use(express.json());
 app.use(cors()); // Allow frontend to connect
 
 // Connect to Postgres (via Docker)
+// Connect to Postgres (via Docker on our new custom port)
 const pool = new Pool({
-  user: 'admin',
+  user: 'safety_admin',
   host: 'localhost',
-  database: 'fraud_db',
-  password: 'password',
-  port: 5432,
+  database: 'fraud_db_new',
+  password: 'supersecretpassword',
+  port: 5435, 
 });
 
 app.post('/api/report', async (req, res) => {

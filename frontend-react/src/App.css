@@ -1,0 +1,153 @@
+/* App.css - Professional Cybersecurity Theme */
+
+:root {
+  --bg-color: #0b1120;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary-accent: #3b82f6;
+  --primary-hover: #2563eb;
+  --danger-color: #ef4444;
+  --safe-color: #10b981;
+  --border-color: #334155;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+/* Header Styling */
+.header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Form Container */
+.report-form {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+
+/* Inputs & Textareas */
+.form-input, .form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #0f172a;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: monospace;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* The Submit Button */
+.submit-btn {
+  width: 100%;
+  background-color: var(--primary-accent);
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  background-color: var(--border-color);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Results Dashboard Card */
+.results-card {
+  background: linear-gradient(145deg, var(--card-bg), #141d2b);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--primary-accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.4s ease-out;
+}
+
+.results-card h3 {
+  margin-top: 0;
+  color: var(--primary-accent);
+  font-size: 1.3rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.results-card p {
+  margin: 12px 0;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.results-card strong {
+  color: var(--text-main);
+}
+
+/* Status Colors */
+.status-critical {
+  color: var(--danger-color);
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+.status-safe {
+  color: var(--safe-color);
+  font-weight: bold;
+}
+
+/* Smooth pop-in animation for the results */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

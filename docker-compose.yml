@@ -3,10 +3,10 @@ services:
   postgres:
     image: postgres:15
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: fraud_db
+      POSTGRES_USER: safety_admin
+      POSTGRES_PASSWORD: supersecretpassword
+      POSTGRES_DB: fraud_db_new
     ports:
-      - "5432:5432"
+      - "5435:5432"
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
